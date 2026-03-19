@@ -1,0 +1,61 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int W0, I0, T;
+    int D, I, A;
+    cin >> W0 >> I0 >> T;
+    cin >> D >> I >> A;
+    
+    int w1 = W0 + D * (I - (I0 + A));
+    int b1 = I0;
+    
+    if(w1 <=0){
+        cout << "Danger Diet" << '\n';
+    } else {
+        cout << w1 << ' ' << b1 << '\n';
+    }
+    
+    int w2=W0;
+    int b2 = I0;
+    bool danger = false; // 기초 고려할때
+    
+    for(int day=0; day < D; day++){
+        int diff = I - (b2 + A);
+        
+        w2 += diff; // 체중변화
+        
+        if(abs(diff) > T){
+            if(diff >= 0) b2 += diff / 2;
+            else b2 += (diff - 1) / 2;
+        }
+        
+        if(w2 <= 0 || b2 <= 0){
+            danger = true;
+            break;
+        }
+    }
+    
+    if(danger){
+        cout << "Danger Diet" << '\n';
+    } else {
+        cout << w2 << ' ' << b2 << ' ';
+        if(I0 > b2){
+            cout << "YOYO" << '\n';
+        } else {
+            cout << "NO" << '\n';
+        }
+    }
+    
+
+    return 0;
+}

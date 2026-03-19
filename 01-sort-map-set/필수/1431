@@ -1,0 +1,60 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int sum_num(const string& a){
+    int sum =0 ;
+    for(char c: a){
+        if(c >= '0' && c <= '9'){
+            sum += c - '0'; 
+        }
+    }
+    
+    return sum;
+}
+
+
+bool comp(const string& a, const string& b){
+    if(a.length() != b.length()){
+        return a.length() < b.length(); // false 인 조건
+    }
+    
+    int sA = sum_num(a);
+    int sB = sum_num(b);
+    
+    if(sA != sB){
+        return sA < sB;
+    }
+    
+    return a < b;
+}
+
+int main()
+{   
+    int n;
+    cin >> n;
+    
+    vector<string> input(n);
+    
+    for(int i=0; i<n; i++){
+        cin >> input[i];
+    }
+    
+    sort(input.begin(), input.end(), comp); // false면 swap
+    
+    for(const string& s:input){
+        cout << s << '\n';
+    }
+
+    return 0;
+}

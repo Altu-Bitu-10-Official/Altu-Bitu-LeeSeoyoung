@@ -1,0 +1,34 @@
+#include <iostream>
+#include <map>
+
+using namespace std;
+
+int main()
+{
+    int n, m; // 몬 개수, 문제 개수
+    map<string, int> name;
+    map<int, string> num;
+    
+    string input;
+    
+    cin >> n >> m;
+    
+    for(int i=1; i<=n; i++){
+        cin >> input;
+        name[input] = i;
+        num[i] = input;
+    }
+    
+    for(int i=0; i< m; i++){
+        cin >> input;
+        
+        if(isdigit(input[0])){
+            cout << num[stoi(input)] << '\n'; //string to int
+        } else{
+            cout << name[input] << '\n';
+        }
+    }
+    
+
+    return 0;
+}
