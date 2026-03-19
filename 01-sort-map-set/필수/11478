@@ -1,0 +1,32 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main()
+{
+    set<string> s;
+    
+    string c;
+    cin >> c;
+    
+    for(int i=0; i<c.size(); i++){
+        for(int j=1; j<= c.size() -i; j++){
+            s.insert(c.substr(i, j)); // 자기 set에 넣기 
+            //중복 제거는 set에서 해줌 
+        }
+    }
+    
+    cout << s.size();
+    
+    
+    return 0;
+}
