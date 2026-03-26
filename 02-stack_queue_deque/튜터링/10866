@@ -1,0 +1,82 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <deque>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    
+    int x;
+    
+    deque<int> d;
+    
+    while(n--){
+        string cmd;
+        cin >> cmd;
+        
+        if(cmd == "push_front"){
+            cin >> x;
+            d.push_front(x);
+        }
+        else if(cmd == "push_back"){
+            cin >> x;
+            d.push_back(x);
+        }
+        else if(cmd == "pop_front"){
+            if(d.empty()){
+                cout << "-1\n";
+            } else {
+                cout << d.front() << "\n";
+                d.pop_front();
+            }
+        }
+        else if(cmd == "pop_back"){
+            if(d.empty()){
+                cout << "-1\n";
+            } else {
+                cout << d.back() << "\n";
+                d.pop_back();
+            }
+        }
+        else if(cmd == "size"){
+            cout << d.size() << "\n";
+        }
+        else if(cmd == "empty"){
+            if(d.empty()){
+                cout << "1\n";
+            }
+            else {
+                cout << "0\n";
+            }
+        }
+        else if(cmd == "front"){
+            if(d.empty()){
+                cout << "-1\n";
+            }
+            else {
+                cout << d.front() << "\n";
+            }
+        }
+        else if(cmd == "back"){
+            if(d.empty()){
+                cout << "-1\n";
+            }
+            else {
+                cout << d.back() << "\n";
+            }
+        }
+    }
+
+    return 0;
+}

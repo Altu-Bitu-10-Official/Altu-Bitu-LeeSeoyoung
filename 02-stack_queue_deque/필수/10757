@@ -1,0 +1,47 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    string a, b;
+    cin >> a >> b;
+    
+    int i = a.length()-1; // 가장 작은 자릿수
+    int j = b.length() -1;
+    
+    int carry = 0;
+    
+    vector<int> sum;
+    
+    while( i>=0 || j>= 0 || carry){
+        
+        int x = (i>=0) ? a[i] - '0' : 0;
+        int y = (j>=0) ? b[j] - '0' : 0;
+        
+        int s = x + y + carry;
+        
+        carry = s/10;
+        sum.push_back(s%10);
+        
+        i--; j--;
+    }
+    
+    reverse(sum.begin(), sum.end());
+    
+    for(auto a: sum){
+        cout << a;
+    }
+
+    return 0;
+}
